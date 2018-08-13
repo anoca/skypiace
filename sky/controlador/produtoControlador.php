@@ -18,24 +18,26 @@ function adicionar() {
 }
 
 function deletar($id) {
-    alert(deletarUsuario($id));
-    redirecionar("usuario/index");
+    alert(deletarProduto($id));
+    redirecionar("produto/index");
 }
 
 function editar($id) {
     if (ehPost()) {
-        $nome = $_POST["nome"];
-        $email = $_POST["email"];
-        alert(editarUsuario($id, $nome, $email));
-        redirecionar("usuario/index");
+        $nome = $_POST["nmProduto"];
+        $preco = $_POST["preco"];
+        $descricao = $_POST["descricao"];
+        $sabor = $_POST["sabor"];
+        alert(editarProduto($nome, $preco, $descricao, $sabor));
+        redirecionar("produto/index");
     } else {
-        $dados['usuario'] = pegarUsuarioPorId($id);
-        $dados['acao'] = "./usuario/editar/$id";
-        exibir("usuario/formulario", $dados);
+        $dados['produto'] = pegarProdutoPorId($id);
+        $dados['acao'] = "./produto/editar/$id";
+        exibir("produto/formulario", $dados);
     }
 }
 
 function visualizar($id) {
-    $dados['usuario'] = pegarUsuarioPorId($id);
-    exibir("usuario/visualizar", $dados);
+    $dados['produto'] = pegarProdutooPorId($id);
+    exibir("produto/visualizar", $dados);
 }
